@@ -1,5 +1,116 @@
-.div {
+/* attributed to Claude */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-    color: aquamarine;
-    
+.input-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-section div {
+    margin-bottom: 10px;
+}
+
+.input-section label {
+    display: inline-block;
+    width: 120px;
+    margin-right: 10px;
+}
+
+.input-section input,
+.input-section select {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    width: 150px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.drink-list {
+    margin-top: 20px;
+}
+
+.drink-group {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.drink-info {
+    flex-grow: 1;
+}
+
+.drink-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.up-arrow {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.up-arrow:hover {
+    background-color: #45a049;
+}
+
+.drink-count {
+    font-weight: bold;
+    margin: 0 10px;
+    min-width: 30px;
+    text-align: center;
+}
+
+#results {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    display: none;
+    margin-top: 5px;
+}
+
+.drink-timestamps {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+}
+
+#timeRemaining {
+    font-family: monospace;
+    font-size: 1.2em;
+}
+
+#currentBAC {
+    color: #4CAF50;
 }
