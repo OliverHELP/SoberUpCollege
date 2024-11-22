@@ -1,4 +1,4 @@
-// Attributed to Claude AI
+// Attributed to Claude AI Prompted by Oliver
 
 $(document).ready(function() {
     // State management
