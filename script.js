@@ -171,6 +171,8 @@ function calculateTimeRemaining() {
     return Math.max(0, millisecondsRemaining / (1000 * 60 * 60)); // Convert to hours
 }
 
+$('#good').hide();
+$('#bad').hide();
 function updateBAcAndTimer() {
     const currentBAC = calculateBAC();
     $('#currentBAC').text(currentBAC.toFixed(3));
@@ -178,6 +180,18 @@ function updateBAcAndTimer() {
     if (currentBAC <= 0) {
         $('#timeRemaining').text('0:00:00');
         stopActiveUpdates();
+        return;
+    }
+    if (currentBAC < 0.08) {
+        $('#message').text('get this guy behind the wheel!');
+        $('#good').show();
+        $('#bad').hide();
+        return;
+    }
+    if (currentBAC >= 0.08) {
+        $('#message').text('do NOT get this guy behind the wheel!');
+        $('#bad').show();
+        $('#good').hide();
         return;
     }
 
