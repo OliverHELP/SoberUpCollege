@@ -171,6 +171,7 @@ function calculateTimeRemaining() {
     return Math.max(0, millisecondsRemaining / (1000 * 60 * 60)); // Convert to hours
 }
 
+// mandy's code below
 $('#good').hide();
 $('#bad').hide();
 function updateBAcAndTimer() {
@@ -194,6 +195,7 @@ function updateBAcAndTimer() {
         $('#good').hide();
         return;
     }
+// mandy's code end
 
     // Update target end time if it's not set
     if (!targetEndTime) {
