@@ -161,7 +161,8 @@ $(document).ready(function() {
 
         return `${wholehours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
-
+    $('#good').hide();
+    $('#bad').hide();
     function updateBAcAndTimer() {
         const currentBAC = calculateBAC();
         $('#currentBAC').text(currentBAC.toFixed(3));
@@ -171,6 +172,19 @@ $(document).ready(function() {
             stopActiveUpdates();
             return;
         }
+        if (currentBAC < 0.08) {
+            $('#message').text('get this guy behind the wheel!');
+            $('#good').show();
+            $('#bad').hide();
+            return;
+        }
+        if (currentBAC >= 0.08) {
+            $('#message').text('do NOT get this guy behind the wheel!');
+            $('#bad').show();
+            $('#good').hide();
+            return;
+        }
+
 
         const hoursRemaining = currentBAC / METABOLISM_RATE;
         $('#timeRemaining').text(formatTime(hoursRemaining));
