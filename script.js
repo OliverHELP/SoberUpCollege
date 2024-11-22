@@ -7,8 +7,9 @@ $(document).ready(function() {
         weight: 0
     };
     let drinkGroups = {};
-    let timerInterval;
     let updateInterval;
+    let lastUpdateTime = null; // Added this important variable
+    let targetEndTime = null; // Added to track when BAC will reach 0
 
     // Constants
     const METABOLISM_RATE = 0.015; // BAC reduction per hour
@@ -152,42 +153,116 @@ $(document).ready(function() {
         const bac = (totalAlcohol * 100) / (personalInfo.weight * 453.592 * genderConstant);
         return Math.max(0, bac);
     }
+    
+// Timer Functions
+function formatTime(hours) {
+    const wholehours = Math.floor(hours);
+    const minutes = Math.floor((hours - wholehours) * 60);
+    const seconds = Math.floor(((hours - wholehours) * 60 - minutes) * 60);
 
-    // Timer Functions
-    function formatTime(hours) {
-        const wholehours = Math.floor(hours);
-        const minutes = Math.floor((hours - wholehours) * 60);
-        const seconds = Math.floor(((hours - wholehours) * 60 - minutes) * 60);
+    return `${wholehours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
 
-        return `${wholehours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
+function calculateTimeRemaining() {
+    if (!targetEndTime) return 0;
+    
+    const now = new Date();
+    const millisecondsRemaining = targetEndTime - now;
+    return Math.max(0, millisecondsRemaining / (1000 * 60 * 60)); // Convert to hours
+}
 
-    function updateBAcAndTimer() {
-        const currentBAC = calculateBAC();
-        $('#currentBAC').text(currentBAC.toFixed(3));
+function updateBAcAndTimer() {
+    const currentBAC = calculateBAC();
+    $('#currentBAC').text(currentBAC.toFixed(3));
 
-        if (currentBAC <= 0) {
-            $('#timeRemaining').text('0:00:00');
-            stopActiveUpdates();
-            return;
-        }
-
-        const hoursRemaining = currentBAC / METABOLISM_RATE;
-        $('#timeRemaining').text(formatTime(hoursRemaining));
-    }
-
-    function startActiveUpdates() {
-        // Clear existing intervals
+    if (currentBAC <= 0) {
+        $('#timeRemaining').text('0:00:00');
         stopActiveUpdates();
-
-        // Start new intervals
-        updateInterval = setInterval(updateBAcAndTimer, 1000);
-        
-        // Initial update
-        updateBAcAndTimer();
+        return;
     }
 
-    function stopActiveUpdates() {
+    // Update target end time if it's not set
+    if (!targetEndTime) {
+        const hoursToZero = currentBAC / METABOLISM_RATE;
+        targetEndTime = new Date(Date.now() + (hoursToZero * 60 * 60 * 1000));
+    }
+
+    // Calculate and display remaining time
+    const hoursRemaining = calculateTimeRemaining();
+    $('#timeRemaining').text(formatTime(hoursRemaining));
+
+    // If time has run out, stop updates
+    if (hoursRemaining <= 0) {
+        $('#timeRemaining').text('0:00:00');
+        stopActiveUpdates();
+    }
+}
+
+function startActiveUpdates() {
+    // Clear existing intervals
+    stopActiveUpdates();
+
+    // Calculate initial BAC and set target end time
+    const currentBAC = calculateBAC();
+    if (currentBAC > 0) {
+        const hoursToZero = currentBAC / METABOLISM_RATE;
+        targetEndTime = new Date(Date.now() + (hoursToZero * 60 * 60 * 1000));
+    }
+
+    // Start new interval for updates
+    updateInterval = setInterval(updateBAcAndTimer, 1000);
+    
+    // Initial update
+    updateBAcAndTimer();
+
+    console.log('Timer started, updating every second');
+}
+
+function stopActiveUpdates() {
+    if (updateInterval) {
         clearInterval(updateInterval);
+        updateInterval = null;
+        targetEndTime = null;
+        console.log('Timer stopped');
     }
+}
+
+function resetTimer() {
+    stopActiveUpdates();
+    drinkGroups = {};
+    targetEndTime = null;
+    updateDrinksList();
+    $('#currentBAC').text('0.000');
+    $('#timeRemaining').text('0:00:00');
+}
+
+// Modified addDrinkToGroup to update end time
+function addDrinkToGroup(drink) {
+    const drinkKey = createDrinkKey(drink);
+    
+    if (!drinkGroups[drinkKey]) {
+        drinkGroups[drinkKey] = {
+            name: drink.name,
+            abv: drink.abv,
+            oz: drink.oz,
+            timestamps: [],
+            count: 0
+        };
+    }
+    
+    drinkGroups[drinkKey].timestamps.push(new Date());
+    drinkGroups[drinkKey].count++;
+    
+    updateDrinksList();
+    
+    // Recalculate target end time and start timer
+    const currentBAC = calculateBAC();
+    const hoursToZero = currentBAC / METABOLISM_RATE;
+    targetEndTime = new Date(Date.now() + (hoursToZero * 60 * 60 * 1000));
+    startActiveUpdates();
+}
+
+// Add button handlers
+$('#resetTimer').click(resetTimer);
+
 });
