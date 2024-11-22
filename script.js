@@ -1,4 +1,4 @@
-// Attributed to Claude 
+// Attributed to Claude AI
 
 $(document).ready(function() {
     // State management
