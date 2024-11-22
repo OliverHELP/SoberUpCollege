@@ -2,66 +2,95 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sober Up! BAC Calculator</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAC Calculator</title>
     <!-- Make sure the path to your CSS file is correct relative to index.html -->
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
     <!-- Load jQuery BEFORE your script.js -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- Add defer attribute and make sure path is correct -->
     <script src="./script.js" defer></script>
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Hina+Mincho&family=Noto+Sans+JP:wght@100..900&family=Sawarabi+Gothic&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Rest of the HTML remains exactly the same -->
-    <h1>Sober Up! BAC Calculator</h1>
-    
-    <div class="input-section">
-        <h2>Personal Information</h2>
-        <div>
-            <label for="gender">Gender:</label>
-            <select id="gender" required>
-                <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-        </div>
-        <div>
-            <label for="weight">Weight (lbs):</label>
-            <input type="number" id="weight" required>
-        </div>
-        <button id="saveInfo">Save Information</button>
-        <p class="error" id="personalInfoError">Please fill in all personal information</p>
+    <h1>Sober Up!</h1>
+    <h2>
+      Blood Alcohol Content (BAC) Calculator and Alcohol By Volume (ABV)Tracker
+    </h2>
+
+    <div class="intro">
+      <p>
+        This is a website geared more towards college students. When partying
+        there needs to be a useful tool to help keep track of how much alcohol
+        they're ingesting, so this website will help students calculate BAC,
+        track ABV, as well as estimate a time for sobering up.
+      </p>
+    </div>
+
+    <div class="info">
+      <p>
+        <span class="highlight_red">Blood Alcohol Content</span>, or BAC, refers
+        to the percentage of alcohol in a person's bloodstream while
+        <span class="highlight_red">Alcohol By Volume</span>, or ABV, refers to
+        the percentage of pure alcohol in a drink. >
+      </p>
     </div>
 
     <div class="input-section">
-        <h2>Add Drinks</h2>
-        <div>
-            <label for="drinkName">Drink Name:</label>
-            <input type="text" id="drinkName" required>
-        </div>
-        <div>
-            <label for="abv">ABV (%):</label>
-            <input type="number" id="abv" step="0.1" required>
-        </div>
-        <div>
-            <label for="oz">Amount (oz):</label>
-            <input type="number" id="oz" step="0.1" required>
-        </div>
-        <button id="addDrink">Add Drink</button>
-        <p class="error" id="drinkError">Please fill in all drink information</p>
+      <h2>Personal Information</h2>
+      <div>
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div>
+        <label for="weight">Weight (lbs):</label>
+        <input type="number" id="weight" required />
+      </div>
+      <button id="saveInfo">Save Information</button>
+      <p class="error" id="personalInfoError">
+        Please fill in all personal information
+      </p>
+    </div>
+
+    <div class="input-section">
+      <h2>Add Drinks</h2>
+      <div>
+        <label for="drinkName">Drink Name:</label>
+        <input type="text" id="drinkName" required />
+      </div>
+      <div>
+        <label for="abv">ABV (%):</label>
+        <input type="number" id="abv" step="0.1" required />
+      </div>
+      <div>
+        <label for="oz">Amount (oz):</label>
+        <input type="number" id="oz" step="0.1" required />
+      </div>
+      <button id="addDrink">Add Drink</button>
+      <p class="error" id="drinkError">Please fill in all drink information</p>
     </div>
 
     <div class="drink-list">
-        <h2>Drinks Consumed</h2>
-        <div id="drinksList"></div>
+      <h2>Drinks Consumed</h2>
+      <div id="drinksList"></div>
     </div>
 
     <div id="results">
-        <h2>Results</h2>
-        <p>Current BAC: <span id="currentBAC">0.000</span>%</p>
-        <p>Time until BAC reaches 0: <span id="timeRemaining">0:00:00</span></p>
+      <h2>Results</h2>
+      <p>Current BAC: <span id="currentBAC">0.000</span>%</p>
+      <p>Time until BAC reaches 0: <span id="timeRemaining">0:00:00</span></p>
     </div>
-</body>
+  </body>
 </html>
