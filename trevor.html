@@ -12,15 +12,47 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- Add defer attribute and make sure path is correct -->
     <script src="./script.js" defer></script>
+    <!-- Font Stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Hina+Mincho&family=Noto+Sans+JP:wght@100..900&family=Sawarabi+Gothic&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Rest of the HTML remains exactly the same -->
+    <button id="accessibility-button">
+      <i class="fa fa-universal-access" aria-hidden="true"></i>
+    </button>
+    <div id="accessibility-menu">
+      <button id="close-menu-button" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+      <h2>Accessibility Menu</h2>
+      <div id="button-container">
+        <button id="contrast-toggle" data-state="0">Contrast</button>
+        <button id="font-size-toggle" data-state="0">Font Size</button>
+        <button id="highlight-links-toggle" data-state="0">
+          Highlight Links
+        </button>
+        <button id="text-spacing-toggle" data-state="0">Text Spacing</button>
+        <button id="line-height-toggle" data-state="0">Line Height</button>
+        <button id="cursor-size-toggle" data-state="0">Cursor Size</button>
+        <button id="saturatiion-toggle" data-state="0">Saturation</button>
+      </div>
+      <div>
+        <button id="accessibility-reset-button">
+          <i class="fa fa-undo" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
     <h1>Sober Up!</h1>
     <h2>
       Blood Alcohol Content (BAC) Calculator and Alcohol By Volume (ABV) Tracker
@@ -40,7 +72,7 @@
         <span class="highlight_red">Blood Alcohol Content</span>, or BAC, refers
         to the percentage of alcohol in a person's bloodstream while
         <span class="highlight_red">Alcohol By Volume</span>, or ABV, refers to
-        the percentage of pure alcohol in a drink. >
+        the percentage of pure alcohol in a drink.
       </p>
     </div>
 

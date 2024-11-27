@@ -130,3 +130,149 @@ button:hover {
 #currentBAC {
   color: #4caf50;
 }
+
+/* Accessbility Menu CSS */
+
+#accessibility-button {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 50px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#accessibility-button.hidden {
+  opacity: 0; /* Fade out the button */
+  pointer-events: none; /* Disable clicking */
+}
+
+/* Accessibility Menu Hidden By Default */
+#accessibility-menu {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Start off-screen */
+  width: 300px;
+  height: 100%;
+  background-color: #f2f2f7;
+  border-left: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+/* Menu visible class */
+#accessibility-menu.visible {
+  right: 0; /* slide in */
+}
+
+/* Menu content */
+#accessibility-menu h2 {
+  margin-top: 0;
+  text-align: left;
+}
+
+#accessibility-menu label {
+  font-size: 14px;
+}
+
+#accessibility-menu select {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* Close button inside the menu */
+#close-menu-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+#close-menu-button:hover {
+  background-color: #0056b3;
+}
+
+#button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 5px 2px; /* Space between buttons */
+  width: 300px; /* Adjust as needed */
+  max-width: 100%; /* Allow it to shrink on smaller screens */
+  padding: 0px;
+  margin-bottom: 30px;
+}
+
+#contrast-toggle,
+#font-size-toggle,
+#highlight-links-toggle,
+#text-spacing-toggle,
+#line-height-toggle,
+#cursor-size-toggle,
+#saturatiion-toggle {
+  font-family: inherit;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 5px;
+  margin: 2px;
+  width: 140px; /* Fixed width */
+  height: 100px; /* Fixed height */
+  line-height: 30px; /* Vertically center text if needed */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Truncate overflow text with ellipsis */
+  border: 2px solid transparent; /* Default border */
+  transition: border-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#contrast-toggle:hover,
+#font-size-toggle:hover,
+#highlight-links-toggle:hover,
+#text-spacing-toggle:hover,
+#line-height-toggle:hover,
+#cursor-size-toggle:hover,
+#saturatiion-toggle:hover {
+  border: 2px solid #0056b3;
+}
+
+#contrast-toggle[data-state="0"] {
+  background-color: #ffffff;
+}
+
+#contrast-toggle[data-state="1"] {
+  background-color: #ffffff;
+}
+
+#contrast-toggle[data-state="2"] {
+  background-color: #ffffff;
+}
+
+#contrast-toggle[data-state="3"] {
+  background-color: #ffffff;
+}

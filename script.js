@@ -1,104 +1,104 @@
-// Attributed to Claude 
+// Attributed to Claude
 
-$(document).ready(function() {
-    // State management
-    let personalInfo = {
-        gender: '',
-        weight: 0
-    };
-    let drinkGroups = {};
-    let timerInterval;
-    let updateInterval;
+$(document).ready(function () {
+  // State management
+  let personalInfo = {
+    gender: "",
+    weight: 0,
+  };
+  let drinkGroups = {};
+  let timerInterval;
+  let updateInterval;
 
-    // Constants
-    const METABOLISM_RATE = 0.015; // BAC reduction per hour
-    const ALCOHOL_DENSITY = 0.789; // g/ml
-    const ML_PER_OZ = 29.5735;
-    const GENDER_CONSTANTS = {
-        male: 0.68,
-        female: 0.55
-    };
+  // Constants
+  const METABOLISM_RATE = 0.015; // BAC reduction per hour
+  const ALCOHOL_DENSITY = 0.789; // g/ml
+  const ML_PER_OZ = 29.5735;
+  const GENDER_CONSTANTS = {
+    male: 0.68,
+    female: 0.55,
+  };
 
-    // Event Handlers
-    $('#saveInfo').click(function() {
-        const gender = $('#gender').val();
-        const weight = parseFloat($('#weight').val());
+  // Event Handlers
+  $("#saveInfo").click(function () {
+    const gender = $("#gender").val();
+    const weight = parseFloat($("#weight").val());
 
-        if (!gender || !weight) {
-            $('#personalInfoError').show();
-            return;
-        }
-
-        personalInfo.gender = gender;
-        personalInfo.weight = weight;
-        $('#personalInfoError').hide();
-        alert('Personal information saved!');
-    });
-
-    $('#addDrink').click(function() {
-        if (!personalInfo.gender || !personalInfo.weight) {
-            alert('Please save personal information first!');
-            return;
-        }
-
-        const name = $('#drinkName').val();
-        const abv = parseFloat($('#abv').val());
-        const oz = parseFloat($('#oz').val());
-
-        if (!name || !abv || !oz) {
-            $('#drinkError').show();
-            return;
-        }
-
-        addDrinkToGroup({
-            name: name,
-            abv: abv,
-            oz: oz
-        });
-
-        // Clear inputs
-        $('#drinkName').val('');
-        $('#abv').val('');
-        $('#oz').val('');
-        $('#drinkError').hide();
-    });
-
-    // Drink Management Functions
-    function createDrinkKey(drink) {
-        return `${drink.name}-${drink.abv}-${drink.oz}`;
+    if (!gender || !weight) {
+      $("#personalInfoError").show();
+      return;
     }
 
-    function addDrinkToGroup(drink) {
-        const drinkKey = createDrinkKey(drink);
-        
-        if (!drinkGroups[drinkKey]) {
-            drinkGroups[drinkKey] = {
-                name: drink.name,
-                abv: drink.abv,
-                oz: drink.oz,
-                timestamps: [],
-                count: 0
-            };
-        }
-        
-        drinkGroups[drinkKey].timestamps.push(new Date());
-        drinkGroups[drinkKey].count++;
-        
-        updateDrinksList();
-        startActiveUpdates();
+    personalInfo.gender = gender;
+    personalInfo.weight = weight;
+    $("#personalInfoError").hide();
+    alert("Personal information saved!");
+  });
+
+  $("#addDrink").click(function () {
+    if (!personalInfo.gender || !personalInfo.weight) {
+      alert("Please save personal information first!");
+      return;
     }
 
-    function updateDrinksList() {
-        const drinksList = $('#drinksList');
-        drinksList.empty();
+    const name = $("#drinkName").val();
+    const abv = parseFloat($("#abv").val());
+    const oz = parseFloat($("#oz").val());
 
-        Object.keys(drinkGroups).forEach(key => {
-            const group = drinkGroups[key];
-            const timestamps = group.timestamps
-                .map(t => t.toLocaleTimeString())
-                .join(', ');
+    if (!name || !abv || !oz) {
+      $("#drinkError").show();
+      return;
+    }
 
-            const drinkGroup = $(`
+    addDrinkToGroup({
+      name: name,
+      abv: abv,
+      oz: oz,
+    });
+
+    // Clear inputs
+    $("#drinkName").val("");
+    $("#abv").val("");
+    $("#oz").val("");
+    $("#drinkError").hide();
+  });
+
+  // Drink Management Functions
+  function createDrinkKey(drink) {
+    return `${drink.name}-${drink.abv}-${drink.oz}`;
+  }
+
+  function addDrinkToGroup(drink) {
+    const drinkKey = createDrinkKey(drink);
+
+    if (!drinkGroups[drinkKey]) {
+      drinkGroups[drinkKey] = {
+        name: drink.name,
+        abv: drink.abv,
+        oz: drink.oz,
+        timestamps: [],
+        count: 0,
+      };
+    }
+
+    drinkGroups[drinkKey].timestamps.push(new Date());
+    drinkGroups[drinkKey].count++;
+
+    updateDrinksList();
+    startActiveUpdates();
+  }
+
+  function updateDrinksList() {
+    const drinksList = $("#drinksList");
+    drinksList.empty();
+
+    Object.keys(drinkGroups).forEach((key) => {
+      const group = drinkGroups[key];
+      const timestamps = group.timestamps
+        .map((t) => t.toLocaleTimeString())
+        .join(", ");
+
+      const drinkGroup = $(`
                 <div class="drink-group">
                     <div class="drink-info">
                         <strong>${group.name}</strong> - ${group.abv}% ABV, ${group.oz}oz
@@ -113,81 +113,127 @@ $(document).ready(function() {
                 </div>
             `);
 
-            drinksList.append(drinkGroup);
-        });
+      drinksList.append(drinkGroup);
+    });
 
-        // Add click handlers for up arrows
-        $('.up-arrow').click(function() {
-            const key = $(this).data('key');
-            const group = drinkGroups[key];
-            addDrinkToGroup({
-                name: group.name,
-                abv: group.abv,
-                oz: group.oz
-            });
-        });
+    // Add click handlers for up arrows
+    $(".up-arrow").click(function () {
+      const key = $(this).data("key");
+      const group = drinkGroups[key];
+      addDrinkToGroup({
+        name: group.name,
+        abv: group.abv,
+        oz: group.oz,
+      });
+    });
+  }
+
+  // BAC Calculation Functions
+  function calculateAlcoholGrams(drink) {
+    return ((drink.oz * drink.abv) / 100) * ML_PER_OZ * ALCOHOL_DENSITY;
+  }
+
+  function calculateBAC() {
+    if (Object.keys(drinkGroups).length === 0) return 0;
+
+    let totalAlcohol = 0;
+    const currentTime = new Date();
+    const genderConstant = GENDER_CONSTANTS[personalInfo.gender];
+
+    Object.values(drinkGroups).forEach((group) => {
+      group.timestamps.forEach((timestamp) => {
+        const alcoholGrams = calculateAlcoholGrams(group);
+        const hoursElapsed = (currentTime - timestamp) / (1000 * 60 * 60);
+        const remainingAlcohol = Math.max(
+          0,
+          alcoholGrams - METABOLISM_RATE * hoursElapsed
+        );
+        totalAlcohol += remainingAlcohol;
+      });
+    });
+
+    const bac =
+      (totalAlcohol * 100) / (personalInfo.weight * 453.592 * genderConstant);
+    return Math.max(0, bac);
+  }
+
+  // Timer Functions
+  function formatTime(hours) {
+    const wholehours = Math.floor(hours);
+    const minutes = Math.floor((hours - wholehours) * 60);
+    const seconds = Math.floor(((hours - wholehours) * 60 - minutes) * 60);
+
+    return `${wholehours}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  }
+
+  function updateBAcAndTimer() {
+    const currentBAC = calculateBAC();
+    $("#currentBAC").text(currentBAC.toFixed(3));
+
+    if (currentBAC <= 0) {
+      $("#timeRemaining").text("0:00:00");
+      stopActiveUpdates();
+      return;
     }
 
-    // BAC Calculation Functions
-    function calculateAlcoholGrams(drink) {
-        return (drink.oz * drink.abv/100 * ML_PER_OZ) * ALCOHOL_DENSITY;
+    const hoursRemaining = currentBAC / METABOLISM_RATE;
+    $("#timeRemaining").text(formatTime(hoursRemaining));
+  }
+
+  function startActiveUpdates() {
+    // Clear existing intervals
+    stopActiveUpdates();
+
+    // Start new intervals
+    updateInterval = setInterval(updateBAcAndTimer, 1000);
+
+    // Initial update
+    updateBAcAndTimer();
+  }
+
+  function stopActiveUpdates() {
+    clearInterval(updateInterval);
+  }
+});
+
+// Accessbility Menu JS
+document.addEventListener("DOMContentLoaded", () => {
+  const accessibilityButton = document.getElementById("accessibility-button");
+  const accessibilityMenu = document.getElementById("accessibility-menu");
+  const closeMenuButton = document.getElementById("close-menu-button");
+
+  // Open the menu
+  accessibilityButton.addEventListener("click", () => {
+    accessibilityMenu.classList.add("visible");
+    accessibilityButton.classList.add("hidden"); // Hide the button
+  });
+
+  // Close the menu
+  closeMenuButton.addEventListener("click", () => {
+    accessibilityMenu.classList.remove("visible");
+    accessibilityButton.classList.remove("hidden"); // Show the button again
+  });
+
+  // Contrast Button
+  const contrastButton = document.getElementById("contrast-toggle");
+
+  contrastButton.addEventListener("click", () => {
+    let currentState = parseInt(contrastButton.getAttribute("data-state")); // Get current state (0, 1, or 2)
+
+    // Increment state, cycling through the 3 states
+    currentState = (currentState + 1) % 3; // Modulo 3 ensures it loops back to 0 after 2
+
+    contrastButton.setAttribute("data-state", currentState); // Update the data-state attribute
+
+    // Change button text based on the current state
+    if (currentState === 0) {
+      contrastButton.textContent = "Contrast";
+    } else if (currentState === 1) {
+      contrastButton.textContent = "Invert Colors";
+    } else if (currentState === 2) {
+      contrastButton.textContent = "Dark Contrast";
+    } else {
+      contrastButton.textContent = "Light Contrast";
     }
-
-    function calculateBAC() {
-        if (Object.keys(drinkGroups).length === 0) return 0;
-
-        let totalAlcohol = 0;
-        const currentTime = new Date();
-        const genderConstant = GENDER_CONSTANTS[personalInfo.gender];
-
-        Object.values(drinkGroups).forEach(group => {
-            group.timestamps.forEach(timestamp => {
-                const alcoholGrams = calculateAlcoholGrams(group);
-                const hoursElapsed = (currentTime - timestamp) / (1000 * 60 * 60);
-                const remainingAlcohol = Math.max(0, alcoholGrams - (METABOLISM_RATE * hoursElapsed));
-                totalAlcohol += remainingAlcohol;
-            });
-        });
-
-        const bac = (totalAlcohol * 100) / (personalInfo.weight * 453.592 * genderConstant);
-        return Math.max(0, bac);
-    }
-
-    // Timer Functions
-    function formatTime(hours) {
-        const wholehours = Math.floor(hours);
-        const minutes = Math.floor((hours - wholehours) * 60);
-        const seconds = Math.floor(((hours - wholehours) * 60 - minutes) * 60);
-
-        return `${wholehours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-
-    function updateBAcAndTimer() {
-        const currentBAC = calculateBAC();
-        $('#currentBAC').text(currentBAC.toFixed(3));
-
-        if (currentBAC <= 0) {
-            $('#timeRemaining').text('0:00:00');
-            stopActiveUpdates();
-            return;
-        }
-
-        const hoursRemaining = currentBAC / METABOLISM_RATE;
-        $('#timeRemaining').text(formatTime(hoursRemaining));
-    }
-
-    function startActiveUpdates() {
-        // Clear existing intervals
-        stopActiveUpdates();
-
-        // Start new intervals
-        updateInterval = setInterval(updateBAcAndTimer, 1000);
-        
-        // Initial update
-        updateBAcAndTimer();
-    }
-
-    function stopActiveUpdates() {
-        clearInterval(updateInterval);
-    }
+  });
 });
