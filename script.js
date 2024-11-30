@@ -196,6 +196,7 @@ $(document).ready(function () {
   }
 });
 
+// Trevor's Code Below
 // Accessbility Menu JS
 document.addEventListener("DOMContentLoaded", () => {
   const accessibilityButton = document.getElementById("accessibility-button");
@@ -213,27 +214,34 @@ document.addEventListener("DOMContentLoaded", () => {
     accessibilityMenu.classList.remove("visible");
     accessibilityButton.classList.remove("hidden"); // Show the button again
   });
+});
 
-  // Contrast Button
-  const contrastButton = document.getElementById("contrast-toggle");
+// Contrast Button
+const contrastButton = document.getElementById("contrast-toggle");
 
-  contrastButton.addEventListener("click", () => {
-    let currentState = parseInt(contrastButton.getAttribute("data-state")); // Get current state (0, 1, or 2)
+contrastButton.addEventListener("click", () => {
+  let currentState = parseInt(contrastButton.getAttribute("data-state")); // Get current state
+  currentState = (currentState + 1) % 4; // Cycle through 4 states
+  contrastButton.setAttribute("data-state", currentState); // Update the state
 
-    // Increment state, cycling through the 3 states
-    currentState = (currentState + 1) % 3; // Modulo 3 ensures it loops back to 0 after 2
+  // Remove all state classes from the body
+  document.body.classList.remove("inverted", "dark-contrast", "light-contrast");
 
-    contrastButton.setAttribute("data-state", currentState); // Update the data-state attribute
-
-    // Change button text based on the current state
-    if (currentState === 0) {
-      contrastButton.textContent = "Contrast";
-    } else if (currentState === 1) {
-      contrastButton.textContent = "Invert Colors";
-    } else if (currentState === 2) {
-      contrastButton.textContent = "Dark Contrast";
-    } else {
-      contrastButton.textContent = "Light Contrast";
-    }
-  });
+  // Apply the appropriate class and update the button text
+  if (currentState === 0) {
+    contrastButton.textContent = "Contrast";
+    contrastButton.classList.remove("active-state");
+  } else if (currentState === 1) {
+    document.body.classList.add("inverted");
+    contrastButton.textContent = "Invert Colors";
+    contrastButton.classList.add("active-state");
+  } else if (currentState === 2) {
+    document.body.classList.add("dark-contrast");
+    contrastButton.textContent = "Dark Contrast";
+    contrastButton.classList.add("active-state");
+  } else if (currentState === 3) {
+    document.body.classList.add("light-contrast");
+    contrastButton.textContent = "Light Contrast";
+    contrastButton.classList.add("active-state");
+  }
 });

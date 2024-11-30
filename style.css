@@ -7,6 +7,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  transition: all 0.3s ease;
 }
 
 h1 {
@@ -131,6 +132,7 @@ button:hover {
   color: #4caf50;
 }
 
+/* Trevor's Code Below
 /* Accessbility Menu CSS */
 
 #accessibility-button {
@@ -226,6 +228,11 @@ button:hover {
   margin-bottom: 30px;
 }
 
+.active-state {
+  border: 2px solid #0056b3; /* Highlight active button */
+  background-color: #f0f0f0;
+}
+
 #contrast-toggle,
 #font-size-toggle,
 #highlight-links-toggle,
@@ -275,4 +282,21 @@ button:hover {
 
 #contrast-toggle[data-state="3"] {
   background-color: #ffffff;
+}
+
+/* Inverted colors */
+body.inverted {
+  filter: invert(1);
+}
+
+/* Dark contrast (dark mode) */
+body.dark-contrast {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Light contrast (light mode) */
+body.light-contrast {
+  background-color: #f9f9f9; /* Very light gray */
+  color: #101010; /* Almost black */
 }
