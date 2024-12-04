@@ -1,4 +1,4 @@
-/* attributed to Claude */
+/* attributed to Claude AI prompted by Oliver */
 body {
   font-family: "Funnel Display", sans-serif;
   font-optical-sizing: auto;
@@ -17,6 +17,17 @@ h1 {
 
 h2 {
   text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+img {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 30%;
+  display: block;
 }
 
 .highlight_red {
@@ -132,7 +143,8 @@ button:hover {
   color: #4caf50;
 }
 
-/* Trevor's Code Below
+/* Trevor's Code Below */
+/* Thanks with the help of ChatGPT
 /* Accessbility Menu CSS */
 
 #accessibility-button {
@@ -228,6 +240,11 @@ button:hover {
   margin-bottom: 30px;
 }
 
+.active-state {
+  border: 2px solid #0056b3; /* Highlight active button */
+  background-color: #f0f0f0;
+}
+
 #contrast-toggle,
 #font-size-toggle,
 #highlight-links-toggle,
@@ -269,17 +286,14 @@ button:hover {
 
 #contrast-toggle[data-state="1"] {
   background-color: #ffffff;
-  border: 2px solid #0056b3;
 }
 
 #contrast-toggle[data-state="2"] {
   background-color: #ffffff;
-  border: 2px solid #0056b3;
 }
 
 #contrast-toggle[data-state="3"] {
   background-color: #ffffff;
-  border: 2px solid #0056b3;
 }
 
 /* Inverted colors */
@@ -298,3 +312,5 @@ body.light-contrast {
   background-color: #f9f9f9; /* Very light gray */
   color: #101010; /* Almost black */
 }
+
+/* Trevor's end code */
