@@ -282,3 +282,55 @@ function addDrinkToGroup(drink) {
 $('#resetTimer').click(resetTimer);
 
 });
+
+// Trevor's Code Below
+// Accessbility Menu JS
+document.addEventListener("DOMContentLoaded", () => {
+  const accessibilityButton = document.getElementById("accessibility-button");
+  const accessibilityMenu = document.getElementById("accessibility-menu");
+  const closeMenuButton = document.getElementById("close-menu-button");
+
+  // Open the menu
+  accessibilityButton.addEventListener("click", () => {
+    accessibilityMenu.classList.add("visible");
+    accessibilityButton.classList.add("hidden"); // Hide the button
+  });
+
+  // Close the menu
+  closeMenuButton.addEventListener("click", () => {
+    accessibilityMenu.classList.remove("visible");
+    accessibilityButton.classList.remove("hidden"); // Show the button again
+  });
+});
+
+// Contrast Button
+const contrastButton = document.getElementById("contrast-toggle");
+
+contrastButton.addEventListener("click", () => {
+  let currentState = parseInt(contrastButton.getAttribute("data-state")); // Get current state
+  currentState = (currentState + 1) % 4; // Cycle through 4 states
+  contrastButton.setAttribute("data-state", currentState); // Update the state
+
+  // Remove all state classes from the body
+  document.body.classList.remove("inverted", "dark-contrast", "light-contrast");
+
+  // Apply the appropriate class and update the button text
+  if (currentState === 0) {
+    contrastButton.textContent = "Contrast";
+    contrastButton.classList.remove("active-state");
+  } else if (currentState === 1) {
+    document.body.classList.add("inverted");
+    contrastButton.textContent = "Invert Colors";
+    contrastButton.classList.add("active-state");
+  } else if (currentState === 2) {
+    document.body.classList.add("dark-contrast");
+    contrastButton.textContent = "Dark Contrast";
+    contrastButton.classList.add("active-state");
+  } else if (currentState === 3) {
+    document.body.classList.add("light-contrast");
+    contrastButton.textContent = "Light Contrast";
+    contrastButton.classList.add("active-state");
+  }
+});
+
+// Trevor's code end
