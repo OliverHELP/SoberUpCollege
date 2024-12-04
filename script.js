@@ -230,18 +230,14 @@ contrastButton.addEventListener("click", () => {
   // Apply the appropriate class and update the button text
   if (currentState === 0) {
     contrastButton.textContent = "Contrast";
-    contrastButton.classList.remove("active-state");
   } else if (currentState === 1) {
     document.body.classList.add("inverted");
     contrastButton.textContent = "Invert Colors";
-    contrastButton.classList.add("active-state");
   } else if (currentState === 2) {
     document.body.classList.add("dark-contrast");
     contrastButton.textContent = "Dark Contrast";
-    contrastButton.classList.add("active-state");
   } else if (currentState === 3) {
     document.body.classList.add("light-contrast");
     contrastButton.textContent = "Light Contrast";
-    contrastButton.classList.add("active-state");
   }
 });
