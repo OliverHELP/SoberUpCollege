@@ -7,7 +7,6 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  transition: all 0.3s ease;
 }
 
 h1 {
@@ -240,6 +239,11 @@ button:hover {
   margin-bottom: 30px;
 }
 
+.active-state {
+  border: 2px solid #0056b3; /* Highlight active button */
+  background-color: #f0f0f0;
+}
+
 #contrast-toggle,
 #font-size-toggle,
 #highlight-links-toggle,
@@ -271,7 +275,7 @@ button:hover {
 #text-spacing-toggle:hover,
 #line-height-toggle:hover,
 #cursor-size-toggle:hover,
-#saturation-toggle:hover {
+#saturatiion-toggle:hover {
   border: 2px solid #0056b3;
 }
 
@@ -308,4 +312,4 @@ body.light-contrast {
   color: #101010; /* Almost black */
 }
 
-/* Trevor's code end */
+/* Trevor's end code */
