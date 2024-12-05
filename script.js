@@ -333,3 +333,35 @@ contrastButton.addEventListener("click", () => {
 });
 
 // Trevor's code end
+
+//Jackson's code with the help of chat gpt to create a random drink generator
+document.getElementById('cocktail-button').addEventListener('click', function() {
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+      .then(response => response.json())
+      .then(data => {
+          const cocktail = data.drinks[0];
+
+          // Display cocktail name
+          document.getElementById('cocktail-name').textContent = cocktail.strDrink;
+
+          // Display cocktail image
+          document.getElementById('cocktail-image').src = cocktail.strDrinkThumb;
+
+          // Display ingredients
+          let ingredientsText = '';
+          for (let i = 1; i <= 15; i++) {
+              const ingredient = cocktail[`strIngredient${i}`];
+              const measure = cocktail[`strMeasure${i}`];
+              if (ingredient) {
+                  ingredientsText += `${measure ? measure : ''} ${ingredient}<br>`;
+              }
+          }
+          document.getElementById('cocktail-ingredients').innerHTML = ingredientsText;
+
+          // Display instructions
+          document.getElementById('cocktail-instructions').textContent = cocktail.strInstructions;
+      })
+      .catch(error => {
+          console.error('Error fetching data: ', error);
+      });
+});
