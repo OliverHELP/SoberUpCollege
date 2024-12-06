@@ -219,6 +219,7 @@ button:hover {
   margin-top: 0;
   text-align: left;
   font-size: 26px;
+  letter-spacing: 0;
 }
 
 #accessibility-menu label {
@@ -296,6 +297,16 @@ button:hover {
 #line-height-toggle:hover,
 #alignment-toggle:hover {
   border: 2px solid #0056b3;
+}
+
+#accessibility-reset-button {
+  font-family: "Funnel Display", sans-serif;
+  padding: 10px 14px;
+  background-color: #4c8eb9;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
 }
 
 /* Contrast Button style in their active state */
