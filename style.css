@@ -85,7 +85,7 @@ button {
 }
 
 button:hover {
-  background-color: #4c8eb9;
+  background-color: #3c79a1;
 }
 
 .drink-list {
@@ -118,17 +118,11 @@ button:hover {
   background-color: #4c8eb9;
   color: white;
   border: none;
-  padding: 0.65rem 1.1rem; /* 8px 12px */
+  padding-top: 0.25rem;
+  padding-bottom: 0.5625rem;
   border-radius: 0.25rem; /* 4px */
   cursor: pointer;
   font-size: 1.5rem; /* 16px */
-}
-
-#accessibility-reset-button:hover,
-#saveInfo:hover,
-#addDrink:hover,
-.up-arrow:hover {
-  background-color: #3c79a1;
 }
 
 .drink-count {
@@ -161,8 +155,14 @@ button:hover {
   font-size: 1.2em;
 }
 
-#currentBAC {
+#currentBAC,
+#timeRemaining {
   color: #c1f1ff;
+}
+
+.container {
+  display: grid;
+  place-items: center; /* Aligns both horizontally and vertically */
 }
 
 /* Trevor's Code Below */
@@ -352,15 +352,13 @@ body.dark-contrast #oz {
   border: 0.0625rem solid #ffffff; /* 2px */
 }
 
-body.dark-contrast #saveInfo,
-body.dark-contrast #addDrink {
+body.dark-contrast button {
   background-color: #6bffeb;
   color: #000000;
 }
 
-body.dark-contrast .up-arrow {
-  background-color: #6bffeb;
-  color: #000000;
+body.dark-contrast .error {
+  color: #ff0000;
 }
 
 /* Light contrast */
@@ -385,6 +383,10 @@ body.light-contrast .drink-count {
 
 body.light-contrast .drink-timestamps {
   color: #646464;
+}
+
+body.light-contrast .error {
+  color: #ff4d4d;
 }
 
 body.light-contrast #currentBAC,
