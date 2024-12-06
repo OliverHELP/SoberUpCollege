@@ -298,6 +298,20 @@ button:hover {
   border: 2px solid #0056b3;
 }
 
+#accessibility-reset-button {
+  font-family: "Funnel Display", sans-serif;
+  padding: 10px 14px;
+  background-color: #4c8eb9;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+#accessibility-reset-button:hover {
+  background-color: #3c79a1;
+}
+
 /* Contrast Button style in their active state */
 #contrast-toggle[data-state="0"] {
   background-color: #ffffff;
