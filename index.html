@@ -18,11 +18,11 @@
       href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Hina+Mincho&family=Noto+Sans+JP:wght@100..900&family=Sawarabi+Gothic&display=swap"
       rel="stylesheet"
     />
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
+     <!-- Font Awesome -->
+     <link
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+     rel="stylesheet"
+   />
   </head>
   <body>
     <!-- Trevor's Code Below -->
@@ -131,8 +131,22 @@
       <p>Time until BAC reaches 0: <span id="timeRemaining">0:00:00</span></p>
       <!-- additional comedic relief - Mandy -->
       <h2><span id="message"></span></h2>
-      <img id="good" src="./img/smile.png" />
-      <img id="bad" src="./img/sad.png" />
+      <img id="good" src="./img/smile.png">
+      <img id="bad" src="./img/sad.png">
+      <img id="poison" src="./img/poison.png">
+      <img id="dead" src="./img/dead.gif">
     </div>
+
+      <div class="container">
+          <div id="cocktail-result">
+              <h2 id="cocktail-name">Cocktail Name</h2>
+              <img id="cocktail-image" src="" alt="Cocktail Image" style="max-width: 200px;">
+              <p id="cocktail-ingredients"></p>
+              <p id="cocktail-instructions"></p>
+          </div>
+          <button id="cocktail-button">Suggest a Random Cocktail</button>
+      </div>
+      <script src="script.js"></script>
+</div>
   </body>
 </html>
