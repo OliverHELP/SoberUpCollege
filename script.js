@@ -185,19 +185,14 @@ $(document).ready(function () {
     if (currentBAC <= 0) {
       $("#timeRemaining").text("0:00:00");
       stopActiveUpdates();
-      return;
-    }
-    if (currentBAC < 0.08) {
+    } else if (currentBAC < 0.08) {
       $("#message").text("get this guy behind the wheel!");
       $("#good").show();
       $("#bad").hide();
-      return;
-    }
-    if (currentBAC >= 0.08) {
+    } else if (currentBAC >= 0.08) {
       $("#message").text("do NOT get this guy behind the wheel!");
       $("#bad").show();
       $("#good").hide();
-      return;
     }
     // mandy's code end
 
