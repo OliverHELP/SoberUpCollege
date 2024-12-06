@@ -38,23 +38,18 @@
       <div id="button-container">
         <button id="contrast-toggle" data-state="0">Contrast</button>
         <button id="font-size-toggle" data-state="0">Font Size</button>
-        <button id="highlight-links-toggle" data-state="0">
-          Highlight Links
-        </button>
         <button id="text-spacing-toggle" data-state="0">Text Spacing</button>
         <button id="line-height-toggle" data-state="0">Line Height</button>
-        <button id="cursor-size-toggle" data-state="0">Cursor Size</button>
-        <button id="saturatiion-toggle" data-state="0">Saturation</button>
+        <button id="alignment-toggle" data-state="0">Text Align</button>
       </div>
       <div>
         <button id="accessibility-reset-button">
           <i class="fa fa-undo" aria-hidden="true"></i>
         </button>
       </div>
-      
-      <!-- Trevor's code end -->
-      
     </div>
+    <!-- Trevor's code end -->
+     
     <h1>Sober Up!</h1>
     <h2>
       Blood Alcohol Content (BAC) Calculator and Alcohol By Volume (ABV) Tracker
@@ -71,10 +66,19 @@
 
     <div class="info">
       <p>
-        <span class="highlight_red">Blood Alcohol Content</span>, or BAC, refers
-        to the percentage of alcohol in a person's bloodstream while
-        <span class="highlight_red">Alcohol By Volume</span>, or ABV, refers to
-        the percentage of pure alcohol in a drink.
+          <a
+            href="https://vaden.stanford.edu/super/alcohol-drug-info/reduce-your-risk/what-blood-alcohol-concentration-bac#:~:text=Blood%20Alcohol%20Concentration%20(BAC)%20refers,for%20every%201000%20parts%20blood."
+            target="_blank"
+            >Blood Alcohol Content</a
+          ></span
+        >, or BAC, refers to the percentage of alcohol in a person's bloodstream
+        while <a
+        href="https://lcb.wa.gov/education2ab/understanding_alcohol_content#:~:text=Alcohol%20content%20is%20measured%20by,of%20alcohol%20content%20by%20volume."
+        target="_blank"</a
+          ></span
+        >Alcohol By Volume</a
+        >, or ABV,
+        refers to the percentage of pure alcohol in a drink.
       </p>
     </div>
 
@@ -134,13 +138,13 @@
     </div>
 
       <div class="container">
-          <button id="cocktail-button">Suggest a Random Cocktail</button>
           <div id="cocktail-result">
               <h2 id="cocktail-name">Cocktail Name</h2>
               <img id="cocktail-image" src="" alt="Cocktail Image" style="max-width: 200px;">
               <p id="cocktail-ingredients"></p>
               <p id="cocktail-instructions"></p>
           </div>
+          <button id="cocktail-button">Suggest a Random Cocktail</button>
       </div>
       <script src="script.js"></script>
 </div>
