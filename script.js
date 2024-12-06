@@ -345,21 +345,21 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("light-contrast");
       contrastButton.textContent = "Light Contrast";
     }
+    console.log("Current state:", currentState);
   });
-});
 
-// Font Size Button
-document.addEventListener("DOMContentLoaded", () => {
+  // Font Size Button
   const fontSizeButton = document.getElementById("font-size-toggle");
   const root = document.documentElement; // Reference to <html>
 
   fontSizeButton.addEventListener("click", () => {
-    // Get the current state
-    let currentState = parseInt(fontSizeButton.getAttribute("data-state")) || 0;
+    // Get the current state and ensure it defaults to 0 if invalid
+    let currentState = parseInt(fontSizeButton.getAttribute("data-state"), 10);
+    if (isNaN(currentState)) currentState = 0;
 
-    // Update the state and cycle through 4 font size states
+    // Cycle through 4 font size states
     currentState = (currentState + 1) % 4;
-    fontSizeButton.setAttribute("data-state", currentState);
+    fontSizeButton.setAttribute("data-state", currentState); // Update the state
 
     // Apply the font size based on the state
     if (currentState === 0) {
@@ -375,11 +375,10 @@ document.addEventListener("DOMContentLoaded", () => {
       root.style.fontSize = "14px"; // Smaller size
       fontSizeButton.textContent = "Small";
     }
+    console.log("Current state:", currentState);
   });
-});
 
-// Line Spacing Button
-document.addEventListener("DOMContentLoaded", () => {
+  // Line Spacing Button
   const textSpacingButton = document.getElementById("text-spacing-toggle");
 
   textSpacingButton.addEventListener("click", () => {
@@ -389,7 +388,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Remove all line-spacing classes
     document.body.classList.remove(
-      "text-spacing-0",
       "text-spacing-1",
       "text-spacing-2",
       "text-spacing-3"
@@ -397,7 +395,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Apply the appropriate text-spacing class based on the current state
     if (currentState === 0) {
-      document.body.classList.add("text-spacing-0");
       textSpacingButton.textContent = "Text Spacing";
     } else if (currentState === 1) {
       document.body.classList.add("text-spacing-1");
@@ -409,11 +406,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("text-spacing-3");
       textSpacingButton.textContent = "Heavy Spacing";
     }
+    console.log("Current state:", currentState);
   });
-});
 
-// Line Height Button
-document.addEventListener("DOMContentLoaded", () => {
+  // Line Height Button
   const lineHeightButton = document.getElementById("line-height-toggle");
 
   // Add event listener to change line-height when button is clicked
@@ -427,7 +423,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Remove all line-height classes
     document.body.classList.remove(
-      "line-height-0",
       "line-height-1",
       "line-height-2",
       "line-height-3"
@@ -435,7 +430,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Apply the appropriate line-height class based on the current state
     if (currentState === 0) {
-      document.body.classList.add("line-height-0");
       lineHeightButton.textContent = "Line Height"; // Default text
     } else if (currentState === 1) {
       document.body.classList.add("line-height-1");
@@ -447,11 +441,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("line-height-3");
       lineHeightButton.textContent = "Line Height (2x)"; // Heavy line-height
     }
+    console.log("Current state:", currentState);
   });
-});
 
-// Alignment Button
-document.addEventListener("DOMContentLoaded", () => {
+  // Alignment Button
   const alignmentButton = document.getElementById("alignment-toggle");
 
   alignmentButton.addEventListener("click", () => {
@@ -462,16 +455,10 @@ document.addEventListener("DOMContentLoaded", () => {
     alignmentButton.setAttribute("data-state", currentState); // Update the state
 
     // Remove all alignment classes
-    document.body.classList.remove(
-      "align-default",
-      "align-left",
-      "align-center",
-      "align-right"
-    );
+    document.body.classList.remove("align-left", "align-center", "align-right");
 
     // Apply the appropriate alignment class
     if (currentState === 0) {
-      document.body.classList.add("align-default");
       alignmentButton.textContent = "Text Align";
     } else if (currentState === 1) {
       document.body.classList.add("align-left");
@@ -483,60 +470,75 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("align-right");
       alignmentButton.textContent = "Align Right";
     }
+    console.log("Current state:", currentState);
   });
 });
 
 // Undo Button Functionality
-document.addEventListener("DOMContentLoaded", () => {
-  const resetButton = document.getElementById("accessibility-reset-button");
+const resetButton = document.getElementById("accessibility-reset-button");
 
-  resetButton.addEventListener("click", () => {
-    // Reset all buttons with a "data-state" attribute
-    const buttons = document.querySelectorAll("[data-state]");
-    buttons.forEach((button) => {
-      // Reset state to 0
-      button.setAttribute("data-state", 0);
+resetButton.addEventListener("click", () => {
+  // Reset all buttons with a "data-state" attribute
+  const buttons = document.querySelectorAll("[data-state]");
+  buttons.forEach((button) => {
+    // Reset state to 0
+    button.setAttribute("data-state", 0);
 
-      // Update text to the default state label (customize as needed)
-      if (button.id === "line-spacing-toggle") {
-        button.textContent = "Line Spacing";
-      } else if (button.id === "alignment-toggle") {
-        button.textContent = "Text Align";
-      } else if (button.id === "font-size-toggle") {
-        button.textContent = "Font Size";
-      } else if (button.id === "contrast-toggle") {
-        button.textContent = "Contrast";
-      } else if (button.id === "line-height-toggle") {
-        button.textContent = "Line Height";
-      }
-    });
-
-    // Remove accessibility-related classes from the body
-    document.body.classList.remove(
-      "dark-contrast",
-      "light-contrast",
-      "text-spacing-1",
-      "text-spacing-2",
-      "text-spacing-3",
-      "line-height-1",
-      "line-height-2",
-      "line-height-3",
-      "align-left",
-      "align-center",
-      "align-right",
-      "align-justify"
-    );
-
-    // Reset any inline styles applied to the body
-    document.body.style.fontSize = "";
-    document.body.style.lineHeight = "";
-    document.body.style.textAlign = "";
-
-    // Optionally log the reset action
-    console.log(
-      "All accessibility settings and button states have been reset."
-    );
+    // Reset button text based on button id
+    if (button.id === "text-spacing-toggle") {
+      button.textContent = "Text Spacing"; // Default state for Line Spacing
+      document.body.classList.remove(
+        "text-spacing-1",
+        "text-spacing-2",
+        "text-spacing-3"
+      ); // Remove any applied line-spacing classes
+    } else if (button.id === "alignment-toggle") {
+      button.textContent = "Text Align"; // Default state for Alignment
+      document.body.classList.remove(
+        "align-left",
+        "align-center",
+        "align-right",
+        "align-justify"
+      ); // Remove any applied alignment classes
+    } else if (button.id === "font-size-toggle") {
+      button.textContent = "Font Size"; // Default state for Font Size
+      document.documentElement.style.fontSize = ""; // Reset font size to default
+    } else if (button.id === "contrast-toggle") {
+      button.textContent = "Contrast"; // Default state for Contrast
+      document.body.classList.remove("dark-contrast", "light-contrast"); // Remove contrast classes
+    } else if (button.id === "line-height-toggle") {
+      button.textContent = "Line Height"; // Default state for Line Height
+      document.body.classList.remove(
+        "line-height-1",
+        "line-height-2",
+        "line-height-3"
+      ); // Remove line-height classes
+    }
   });
+
+  // Remove all accessibility-related classes from the body (a catch-all reset)
+  document.body.classList.remove(
+    "dark-contrast",
+    "light-contrast",
+    "text-spacing-1",
+    "text-spacing-2",
+    "text-spacing-3",
+    "line-height-1",
+    "line-height-2",
+    "line-height-3",
+    "align-left",
+    "align-center",
+    "align-right",
+    "align-justify"
+  );
+
+  // Reset any inline styles applied to the body (ensure complete reset)
+  document.body.style.fontSize = "";
+  document.body.style.lineHeight = "";
+  document.body.style.textAlign = "";
+
+  // Optionally log the reset action
+  console.log("All accessibility settings and button states have been reset.");
 });
 // Trevor's code end
 
