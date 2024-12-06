@@ -1,16 +1,18 @@
 /* attributed to Claude AI prompted by Oliver */
 body {
+  background-color: #18181d;
+  color: white;
   font-family: "Funnel Display", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
-  max-width: 800px;
+  max-width: 50rem; /* 800px */
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem; /* 20px */
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 3.125rem; /* 50px */
   text-align: center;
 }
 
@@ -22,64 +24,95 @@ p {
   text-align: center;
 }
 
+.intro p,
+.info p {
+  text-align: left;
+}
+
 img {
   margin-left: auto;
   margin-right: auto;
-  max-width: 30%;
+  max-width: 18.75%; /* 30% */
   display: block;
 }
 
-.highlight_red {
-  color: red;
+/* Link style */
+a {
+  text-decoration: none;
+  color: rgb(255, 132, 132);
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .input-section {
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin-bottom: 1.25rem; /* 20px */
+  padding: 1.25rem; /* 20px */
+  border: 0.0625rem solid #ccc; /* 1px */
+  border-radius: 0.3125rem; /* 5px */
 }
 
 .input-section div {
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem; /* 10px */
+}
+
+.input-section {
+  border-width: 2px;
 }
 
 .input-section label {
   display: inline-block;
-  width: 120px;
-  margin-right: 10px;
+  width: 7.5rem; /* 120px */
+  margin-right: 0.625rem; /* 10px */
 }
 
 .input-section input,
 .input-section select {
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  width: 150px;
+  padding: 0.3125rem; /* 5px */
+  border-radius: 0.1875rem; /* 3px */
+  border: 0.0625rem solid #ccc; /* 1px */
+  width: 9.375rem; /* 150px */
 }
 
 button {
-  padding: 8px 16px;
-  background-color: #4caf50;
+  padding: 0.5rem 1rem; /* 8px 16px */
+  background-color: #4c8eb9;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem; /* 4px */
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #31754b;
+  background-color: #4c8eb9;
+}
+
+#gender,
+#weight,
+#drinkName,
+#abv,
+#oz,
+#saveInfo,
+#addDrink {
+  font-family: "Funnel Display", sans-serif;
+}
+
+#saveInfo,
+#addDrink {
+  background-color: #4c8eb9;
 }
 
 .drink-list {
-  margin-top: 20px;
+  margin-top: 1.25rem; /* 20px */
 }
 
 .drink-group {
-  margin-bottom: 15px;
-  padding: 15px;
-  background-color: #f5f5f5;
-  border-radius: 5px;
+  margin-bottom: 0.9375rem; /* 15px */
+  padding: 0.9375rem; /* 15px */
+  background-color: #18181d;
+  border: 0.125rem solid #ccc; /* 2px */
+  border-radius: 0.3125rem; /* 5px */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -87,50 +120,55 @@ button:hover {
 
 .drink-info {
   flex-grow: 1;
+  color: #ffffff;
 }
 
 .drink-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem; /* 10px */
 }
 
 .up-arrow {
-  background-color: #4caf50;
+  background-color: #4c8eb9;
   color: white;
   border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 0.65rem 1.1rem; /* 8px 12px */
+  border-radius: 0.25rem; /* 4px */
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.5rem; /* 16px */
 }
 
+#accessibility-reset-button:hover,
+#saveInfo:hover,
+#addDrink:hover,
 .up-arrow:hover {
-  background-color: #45a049;
+  background-color: #3c79a1;
 }
 
 .drink-count {
+  color: #ffffff;
   font-weight: bold;
-  margin: 0 10px;
-  min-width: 30px;
+  margin: 0 0.625rem; /* 10px */
+  min-width: 1.875rem; /* 30px */
   text-align: center;
 }
 
 #results {
-  margin-top: 20px;
+  margin-top: 1.25rem; /* 20px */
   font-weight: bold;
 }
 
 .error {
-  color: red;
+  color: rgb(255, 132, 132);
   display: none;
-  margin-top: 5px;
+  margin-top: 0.3125rem; /* 5px */
 }
 
 .drink-timestamps {
   font-size: 0.85em;
-  color: #666;
-  margin-top: 5px;
+  color: #dddddd;
+  margin-top: 0.3125rem; /* 5px */
 }
 
 #timeRemaining {
@@ -139,7 +177,7 @@ button:hover {
 }
 
 #currentBAC {
-  color: #4caf50;
+  color: #c1f1ff;
 }
 
 /* Trevor's Code Below */
@@ -148,21 +186,22 @@ button:hover {
 
 #accessibility-button {
   position: fixed;
-  top: 25px;
-  right: 25px;
-  padding: 10px;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
+  top: 1.5625rem; /* 25px */
+  right: 1.5625rem; /* 25px */
+  padding: 0.625rem; /* 10px */
+  width: 2.9375rem; /* 47px */
+  height: 2.9375rem; /* 47px */
+  background-color: white; /* White background */
   color: #007bff;
   border: none;
-  border-radius: 50px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 50px;
+  font-size: 3.125rem; /* 50px */
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 1; /* Fully visible by default */
 }
 
 #accessibility-button.hidden {
@@ -172,6 +211,7 @@ button:hover {
 
 /* Accessibility Menu Hidden By Default */
 #accessibility-menu {
+  color: black;
   position: fixed;
   top: 0;
   right: -400px; /* Start off-screen */
@@ -194,6 +234,7 @@ button:hover {
 #accessibility-menu h2 {
   margin-top: 0;
   text-align: left;
+  font-size: 26px;
 }
 
 #accessibility-menu label {
@@ -210,19 +251,20 @@ button:hover {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 30px;
-  height: 30px;
+  width: 30px; /* Fixed width */
+  height: 30px; /* Fixed height */
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 50%;
-  font-size: 18px;
+  font-size: 18px; /* Keep this fixed, you can adjust it if needed */
   font-weight: bold;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
+  padding: 0; /* Remove any padding so that it doesn't stretch */
 }
 
 #close-menu-button:hover {
@@ -239,21 +281,15 @@ button:hover {
   margin-bottom: 30px;
 }
 
-.active-state {
-  border: 2px solid #0056b3; /* Highlight active button */
-  background-color: #f0f0f0;
-}
-
+/* Button Style */
 #contrast-toggle,
 #font-size-toggle,
-#highlight-links-toggle,
 #text-spacing-toggle,
 #line-height-toggle,
-#cursor-size-toggle,
-#saturatiion-toggle {
+#alignment-toggle {
   font-family: inherit;
   color: black;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   border-radius: 10px;
   background-color: #ffffff;
@@ -269,47 +305,299 @@ button:hover {
   transition: border-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
+/* Button hover style */
 #contrast-toggle:hover,
 #font-size-toggle:hover,
-#highlight-links-toggle:hover,
 #text-spacing-toggle:hover,
 #line-height-toggle:hover,
-#cursor-size-toggle:hover,
-#saturatiion-toggle:hover {
+#alignment-toggle:hover {
   border: 2px solid #0056b3;
 }
 
+/* Contrast Button style in their active state */
 #contrast-toggle[data-state="0"] {
   background-color: #ffffff;
 }
 
 #contrast-toggle[data-state="1"] {
   background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
 }
 
 #contrast-toggle[data-state="2"] {
   background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
 }
 
-#contrast-toggle[data-state="3"] {
-  background-color: #ffffff;
-}
-
-/* Inverted colors */
-body.inverted {
-  filter: invert(1);
-}
-
-/* Dark contrast (dark mode) */
+/* Dark contrast */
 body.dark-contrast {
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #000000;
+  color: #6bffeb;
 }
 
-/* Light contrast (light mode) */
+body.dark-contrast a {
+  color: #f2ff3d;
+}
+
+body.dark-contrast #currentBAC,
+body.dark-contrast #timeRemaining,
+body.dark-contrast .drink-count,
+body.dark-contrast .drink-timestamps {
+  color: white;
+}
+
+body.dark-contrast .drink-info {
+  color: #6bffeb;
+}
+
+body.dark-contrast .input-section,
+body.dark-contrast .drink-group {
+  background-color: #000000;
+  border: 0.125rem solid #ffffff; /* 2px */
+}
+
+body.dark-contrast #gender,
+body.dark-contrast #weight,
+body.dark-contrast #drinkName,
+body.dark-contrast #abv,
+body.dark-contrast #oz {
+  background-color: #000000;
+  color: #6bffeb;
+  font-family: "Funnel Display", sans-serif;
+  border: 0.0625rem solid #ffffff; /* 2px */
+}
+
+body.dark-contrast #saveInfo,
+body.dark-contrast #addDrink {
+  background-color: #6bffeb;
+  color: #000000;
+  font-family: "Funnel Display", sans-serif;
+}
+
+body.dark-contrast .up-arrow {
+  background-color: #6bffeb;
+  color: #000000;
+}
+
+/* Light contrast */
 body.light-contrast {
   background-color: #f9f9f9; /* Very light gray */
   color: #101010; /* Almost black */
+}
+
+body.light-contrast a {
+  color: #ff4d4d;
+}
+
+body.light-contrast .drink-group {
+  background-color: #f9f9f9;
+  border: 0.125rem solid #ccc; /* 2px */
+}
+
+body.light-contrast .drink-info,
+body.light-contrast .drink-count {
+  color: #000000;
+}
+
+body.light-contrast .drink-timestamps {
+  color: #646464;
+}
+
+body.light-contrast #currentBAC,
+body.light-contrast #timeRemaining {
+  color: #007bff;
+}
+
+/* Font Size Button style in their active state */
+#font-size-toggle[data-state="0"] {
+  background-color: #ffffff;
+}
+
+#font-size-toggle[data-state="1"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#font-size-toggle[data-state="2"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#font-size-toggle[data-state="3"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#font-size-toggle[data-state="4"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+/* Text Spacing Button style in their active state */
+#text-spacing-toggle[data-state="0"] {
+  background-color: #ffffff;
+}
+
+#text-spacing-toggle[data-state="1"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#text-spacing-toggle[data-state="2"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#text-spacing-toggle[data-state="3"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+/* Text Spacing */
+body.text-spacing-0 {
+  letter-spacing: 0; /* Normal spacing */
+}
+
+/* Light Spacing */
+body.text-spacing-1,
+body.text-spacing-1 #gender,
+body.text-spacing-1 #weight,
+body.text-spacing-1 #drinkName,
+body.text-spacing-1 #abv,
+body.text-spacing-1 #oz {
+  letter-spacing: 0.5px; /* Light spacing */
+}
+
+/* Moderate Spacing */
+body.text-spacing-2,
+body.text-spacing-2 #gender,
+body.text-spacing-2 #weight,
+body.text-spacing-2 #drinkName,
+body.text-spacing-2 #abv,
+body.text-spacing-2 #oz {
+  letter-spacing: 1px; /* Moderate spacing */
+}
+
+/* Heavy Spacing */
+body.text-spacing-3,
+body.text-spacing-3 #gender,
+body.text-spacing-3 #weight,
+body.text-spacing-3 #drinkName,
+body.text-spacing-3 #abv,
+body.text-spacing-3 #oz {
+  letter-spacing: 2px; /* Heavy spacing */
+}
+
+/* Text Spacing Button style in their active state */
+#line-height-toggle[data-state="0"] {
+  background-color: #ffffff;
+}
+
+#line-height-toggle[data-state="1"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#line-height-toggle[data-state="2"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#line-height-toggle[data-state="3"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#line-height-toggle[data-state="4"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+/* Line Height */
+body.line-height-0 {
+  line-height: 1.4; /* Default line height */
+}
+
+/* Light line height */
+body.line-height-1 {
+  line-height: 1.6; /* Light line spacing */
+}
+
+/* Moderate line height */
+body.line-height-2 {
+  line-height: 1.8; /* Moderate line spacing */
+}
+
+/* Heavy line height */
+body.line-height-3 {
+  line-height: 2; /* Heavy line spacing */
+}
+
+/* Text Align Button style in their active state */
+#alignment-toggle[data-state="0"] {
+  background-color: #ffffff;
+}
+
+#alignment-toggle[data-state="1"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#alignment-toggle[data-state="2"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+#alignment-toggle[data-state="3"] {
+  background-color: #ffffff;
+  border: 0.125rem solid #0056b3; /* 2px */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 0 2px 5px */
+}
+
+/* Align Left */
+.align-left p,
+.align-left h1,
+.align-left h2,
+.align-left h3,
+.align-left span {
+  text-align: left;
+}
+
+/* Align Center */
+.align-center p,
+.align-center h1,
+.align-center h2,
+.align-center h3,
+.align-center span,
+.align-center .input-section,
+.align-center .drink-group {
+  text-align: center;
+}
+
+/* Align Right */
+.align-right p,
+.align-right h1,
+.align-right h2,
+.align-right h3,
+.align-right span,
+.align-right .input-section,
+.align-right .drink-group {
+  text-align: right;
 }
 
 /* Trevor's end code */
