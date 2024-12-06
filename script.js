@@ -287,6 +287,7 @@ $(document).ready(function () {
 });
 
 // Trevor's Code Below
+// Thanks with the help of ChatGPT
 // Accessbility Menu JS
 document.addEventListener("DOMContentLoaded", () => {
   const accessibilityButton = document.getElementById("accessibility-button");
