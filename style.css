@@ -309,6 +309,10 @@ button:hover {
   cursor: pointer;
 }
 
+#accessibility-reset-button:hover {
+  background-color: #3c79a1;
+}
+
 /* Contrast Button style in their active state */
 #contrast-toggle[data-state="0"] {
   background-color: #ffffff;
