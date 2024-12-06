@@ -47,6 +47,7 @@ a:hover {
 }
 
 .input-section {
+  font-family: "Funnel Display", sans-serif;
   margin-bottom: 1.25rem; /* 20px */
   padding: 1.25rem; /* 20px */
   border: 0.0625rem solid #ccc; /* 1px */
@@ -57,11 +58,8 @@ a:hover {
   margin-bottom: 0.625rem; /* 10px */
 }
 
-.input-section {
-  border-width: 2px;
-}
-
 .input-section label {
+  font-family: "Funnel Display", sans-serif;
   display: inline-block;
   width: 7.5rem; /* 120px */
   margin-right: 0.625rem; /* 10px */
@@ -69,6 +67,7 @@ a:hover {
 
 .input-section input,
 .input-section select {
+  font-family: "Funnel Display", sans-serif;
   padding: 0.3125rem; /* 5px */
   border-radius: 0.1875rem; /* 3px */
   border: 0.0625rem solid #ccc; /* 1px */
@@ -76,6 +75,7 @@ a:hover {
 }
 
 button {
+  font-family: "Funnel Display", sans-serif;
   padding: 0.5rem 1rem; /* 8px 16px */
   background-color: #4c8eb9;
   color: white;
@@ -85,21 +85,6 @@ button {
 }
 
 button:hover {
-  background-color: #4c8eb9;
-}
-
-#gender,
-#weight,
-#drinkName,
-#abv,
-#oz,
-#saveInfo,
-#addDrink {
-  font-family: "Funnel Display", sans-serif;
-}
-
-#saveInfo,
-#addDrink {
   background-color: #4c8eb9;
 }
 
@@ -183,7 +168,6 @@ button:hover {
 /* Trevor's Code Below */
 /* Thanks with the help of ChatGPT
 /* Accessbility Menu CSS */
-
 #accessibility-button {
   position: fixed;
   top: 1.5625rem; /* 25px */
@@ -365,7 +349,6 @@ body.dark-contrast #abv,
 body.dark-contrast #oz {
   background-color: #000000;
   color: #6bffeb;
-  font-family: "Funnel Display", sans-serif;
   border: 0.0625rem solid #ffffff; /* 2px */
 }
 
@@ -373,7 +356,6 @@ body.dark-contrast #saveInfo,
 body.dark-contrast #addDrink {
   background-color: #6bffeb;
   color: #000000;
-  font-family: "Funnel Display", sans-serif;
 }
 
 body.dark-contrast .up-arrow {
