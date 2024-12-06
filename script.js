@@ -178,6 +178,8 @@ $(document).ready(function () {
   // mandy's code below
   $("#good").hide();
   $("#bad").hide();
+  $("#dead").hide();
+  $("#poison").hide();
   function updateBAcAndTimer() {
     const currentBAC = calculateBAC();
     $("#currentBAC").text(currentBAC.toFixed(3));
@@ -189,11 +191,30 @@ $(document).ready(function () {
       $("#message").text("get this guy behind the wheel!");
       $("#good").show();
       $("#bad").hide();
-    } else if (currentBAC >= 0.08) {
+      $("#dead").hide();
+      $("#poison").hide();
+    } else if (currentBAC < 0.25) {
       $("#message").text("do NOT get this guy behind the wheel!");
       $("#bad").show();
       $("#good").hide();
+      $("#dead").hide();
+      $("#poison").hide();
     }
+      else if (currentBAC < 0.40) {
+        $("#message").text("you are poisoned")
+        $("#bad").hide();
+        $("#good").hide();
+        $("#dead").hide();
+        $("#poison").show();
+      }
+      else if (currentBAC > 0.40) {
+        $("#message").text("you died")
+        $("#dead").show();
+        $("#bad").hide();
+        $("#good").hide();
+        $("#poison").hide();
+      }
+
     // mandy's code end
 
     // Update target end time if it's not set
