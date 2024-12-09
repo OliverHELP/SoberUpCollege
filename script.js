@@ -176,10 +176,13 @@ $(document).ready(function () {
   }
 
   // mandy's code below
+  // hide drink suggestion button
+
   $("#good").hide();
   $("#bad").hide();
   $("#dead").hide();
   $("#poison").hide();
+  $(".container").show();
   function updateBAcAndTimer() {
     const currentBAC = calculateBAC();
     $("#currentBAC").text(currentBAC.toFixed(3));
@@ -188,29 +191,31 @@ $(document).ready(function () {
       $("#timeRemaining").text("0:00:00");
       stopActiveUpdates();
     } else if (currentBAC < 0.08) {
-      $("#message").text("get this guy behind the wheel!");
+      $("#message").text("you can legally be on the road!");
       $("#good").show();
       $("#bad").hide();
       $("#dead").hide();
       $("#poison").hide();
     } else if (currentBAC < 0.25) {
-      $("#message").text("do NOT get this guy behind the wheel!");
+      $("#message").text("please do not drive!");
       $("#bad").show();
       $("#good").hide();
       $("#dead").hide();
       $("#poison").hide();
     } else if (currentBAC < 0.4) {
-      $("#message").text("you are poisoned");
+      $("#message").text("big dawg you have alcohol poisoning...");
       $("#bad").hide();
       $("#good").hide();
       $("#dead").hide();
       $("#poison").show();
+      $(".container").hide();
     } else if (currentBAC > 0.4) {
-      $("#message").text("you died");
+      $("#message").text("fatal BAC levels; please go to the hospital");
       $("#dead").show();
       $("#bad").hide();
       $("#good").hide();
       $("#poison").hide();
+      $(".container").hide();
     }
 
     // mandy's code end
