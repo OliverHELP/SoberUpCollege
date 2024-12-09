@@ -183,6 +183,9 @@ $(document).ready(function () {
   $("#dead").hide();
   $("#poison").hide();
   $(".container").show();
+  $(".drinkBan").hide();
+  $("#warn").hide();
+  $("#hide-cocktail").show();
   function updateBAcAndTimer() {
     const currentBAC = calculateBAC();
     $("#currentBAC").text(currentBAC.toFixed(3));
@@ -202,6 +205,7 @@ $(document).ready(function () {
       $("#good").hide();
       $("#dead").hide();
       $("#poison").hide();
+      $("#warn").show();
     } else if (currentBAC < 0.4) {
       $("#message").text("big dawg you have alcohol poisoning...");
       $("#bad").hide();
@@ -209,6 +213,9 @@ $(document).ready(function () {
       $("#dead").hide();
       $("#poison").show();
       $(".container").hide();
+      $(".drinkBan").show();
+      $("#warn").hide();
+      $("#hide-cocktail").hide();
     } else if (currentBAC > 0.4) {
       $("#message").text("fatal BAC levels; please go to the hospital");
       $("#dead").show();
@@ -216,6 +223,9 @@ $(document).ready(function () {
       $("#good").hide();
       $("#poison").hide();
       $(".container").hide();
+      $(".drinkBan").show();
+      $("#warn").hide();
+      $("#hide-cocktail").hide();
     }
 
     // mandy's code end
@@ -546,6 +556,18 @@ resetButton.addEventListener("click", () => {
   console.log("All accessibility settings and button states have been reset.");
 });
 // Trevor's code end
+
+// mandy code: hide random drinks section // attr. w3schools //
+$("#hide-cocktail").click(function () {
+  $(".container").toggle();  
+  if ($(".container").is(":visible")) {
+    $("#hide-cocktail").text("Hide Random Drink Generator");
+  } else {
+    $("#hide-cocktail").text("Show Random Drink Generator");
+  }
+});
+
+// mandy code end //
 
 //Jackson's code with the help of chat gpt to create a random drink generator
 document

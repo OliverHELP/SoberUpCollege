@@ -90,6 +90,11 @@ button:hover {
 
 .drink-list {
   margin-top: 1.25rem; /* 20px */
+  font-family: "Funnel Display", sans-serif;
+  margin-bottom: 1.25rem; /* 20px */
+  padding: 1.25rem; /* 20px */
+  border: 0.0625rem solid #ccc; /* 1px */
+  border-radius: 0.3125rem; /* 5px */
 }
 
 .drink-group {
@@ -145,6 +150,7 @@ button:hover {
 #results {
   margin-top: 1.25rem; /* 20px */
   font-weight: bold;
+  width: 50%;
 }
 
 .error {
@@ -172,6 +178,7 @@ button:hover {
 .container {
   display: grid;
   place-items: center; /* Aligns both horizontally and vertically */
+  width: 50%;
 }
 
 /* Trevor's Code Below */
@@ -607,3 +614,14 @@ body.line-height-3 {
   text-align: right;
 }
 /* Trevor's end code */
+
+/* mandy code: putting the drink suggestion, status checker, and ban side by side */
+/* i also adjusted the width codes in .container and .result */
+.together {
+  display: flex;
+}
+
+.drinkBan {
+  width: 50%;
+}
+/*mandy code end*/

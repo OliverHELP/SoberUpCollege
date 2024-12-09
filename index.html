@@ -125,26 +125,39 @@
       <div id="drinksList"></div>
     </div>
 
-    <div id="results">
-      <h2>Results</h2>
-      <p>Current BAC: <span id="currentBAC">0.000</span>%</p>
-      <p>Time until BAC reaches 0: <span id="timeRemaining">0:00:00</span></p>
-      <!-- additional comedic relief - Mandy -->
-      <h2><span id="message"></span></h2>
-      <img id="good" src="./img/good.png">
-      <img id="bad" src="./img/bad.png">
-      <img id="poison" src="./img/poison.png">
-      <img id="dead" src="./img/dead.png">
+    <div class="input-section">
+    <button id="hide-cocktail">Hide Random Drink Generator</button>
     </div>
+    
+    <div class = "together">
+      <div id="results">
+        <h2>Results</h2>
+        <p>Current BAC: <span id="currentBAC">0.000</span>%</p>
+        <p>Time until BAC reaches 0: <span id="timeRemaining">0:00:00</span></p>
+        <!-- additional comedic relief - Mandy -->
+        <h2><span id="message"></span></h2>
+        <img id="good" src="./img/good.png">
+        <img id="bad" src="./img/bad.png">
+        <img id="poison" src="./img/poison.png">
+        <img id="dead" src="./img/dead.png">
+        <p id = "warn">Please keep an eye on your alcohol intake. Make sure you're taking it slow and drinking water!</p>
+      </div>
+      
+      <!-- hey jackson, i tweaked this section a little bit for ease of use & to add a warning - Mandy -->
+        <div class="container">
+          <button id="cocktail-button">Suggest a Random Cocktail</button>
+            <div id="cocktail-result">
+                <h2 id="cocktail-name"></h2>
+                <img id="cocktail-image" src=""style="max-width: 200px;">
+                <p id="cocktail-ingredients"></p>
+                <p id="cocktail-instructions"></p>
+            </div>
+        </div>
 
-      <div class="container">
-        <button id="cocktail-button">Suggest a Random Cocktail</button>
-          <div id="cocktail-result">
-              <h2 id="cocktail-name"></h2>
-              <img id="cocktail-image" src=""style="max-width: 200px;">
-              <p id="cocktail-ingredients"></p>
-              <p id="cocktail-instructions"></p>
-          </div>
+        <div class = "drinkBan">
+          <h2>No More Drinking...</h2>
+          <p>You are either alcohol poisoned or you have a lethal BAC level. Stop drinking, drink water, and go to the hospital!</p>
+        </div>
       </div>
       <script src="script.js"></script>
 </div>
