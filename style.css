@@ -115,6 +115,7 @@ button:hover {
   gap: 0.625rem; /* 10px */
 }
 
+/* button id */
 .up-arrow {
    background-color: #4c8eb9;
   color: white;
@@ -131,6 +132,7 @@ button:hover {
   align-items: center;
 }
 
+/* number of drinks consumed next to button */
 .drink-count {
   color: #ffffff;
   font-weight: bold;
