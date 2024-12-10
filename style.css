@@ -101,7 +101,7 @@ button:hover {
   margin-bottom: 0.9375rem; /* 15px */
   padding: 0.9375rem; /* 15px */
   background-color: #18181d;
-  border: 0.125rem solid #ccc; /* 2px */
+  border: 0.0625rem solid #ccc; /* 2px */
   border-radius: 0.3125rem; /* 5px */
   display: flex;
   align-items: center;
@@ -122,18 +122,18 @@ button:hover {
 
 /* button id */
 .up-arrow {
-   background-color: #4c8eb9;
+  background-color: #4c8eb9;
   color: white;
   border: none;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
-  border-radius: .25rem; /* 4px */
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-radius: 0.25rem; /* 4px */
   cursor: pointer;
   font-size: 4.5rem; /* 16px */
   width: 10rem;
   height: 15rem;
-  display : flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -367,9 +367,10 @@ body.dark-contrast .drink-info {
 }
 
 body.dark-contrast .input-section,
-body.dark-contrast .drink-group {
+body.dark-contrast .drink-group,
+body.dark-contrast .drink-list {
   background-color: #000000;
-  border: 0.125rem solid #ffffff; /* 2px */
+  border: 0.0625rem solid #ffffff;
 }
 
 body.dark-contrast #gender,
